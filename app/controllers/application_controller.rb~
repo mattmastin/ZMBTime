@@ -1,0 +1,116 @@
+class ApplicationController < ActionController::Base
+  protect_from_forgery
+
+  helper_method :current_user
+
+  def to_num(hours)
+    hours_string = hours.to_s
+
+    hours_split = hours_string.split(':')
+
+    hours_num = hours_split[0] + "."
+
+    if hours_split[1] == "00"
+      hours_num += "0"
+    elsif hours_split[1] == "15"
+      hours_num += "25"
+    elsif hours_split[2] == "30"
+      hours_num += "5"
+    else 
+      hours_num += "75"
+    end
+      
+    
+  end
+
+  def sum_hours(submissions)
+    hours = 0
+    minutes = 0
+    submissions.each do |s|
+      hours += s.hours
+      minutes += s.minutes
+    end
+    hours += minutes / 60
+    minutes = minutes % 60
+    
+    if minutes == 0
+      return hours.to_s + ":00"
+    else
+      return hours.to_s + ":" + minutes.to_s
+    end
+  end
+  
+  def bench_id
+    @bench = ProjectInfo.find_by_project_name("Bench")
+
+    return @bench.id
+  end
+
+  def internal_id
+    @internal = ProjectInfo.find_by_project_name("Internal Project")
+
+    return @internal.id
+  end
+
+  def build_date_from_params(field_name, params)
+    Date.new(params["#{field_name.to_s}(1i)"].to_i,
+             params["#{field_name.to_s}(2i)"].to_i,
+             params["#{field_name.to_s}(3i)"].to_i)
+  end
+
+  def get_client(id)
+    @project=ProjectInfo.find(id)
+    return @project.client
+  end
+
+  def get_project_name(id)
+    @project=ProjectInfo.find(id)
+    return @project.project_name
+  end
+
+
+  def logged_in?
+    if !current_user
+      
+      flash[:notice]= "You must be logged in to see that page!"
+      redirect_to root_url and return
+    else
+      return true
+    end
+  end
+
+  def current_id
+    if logged_in?
+      return current_user.id
+    end
+  end
+
+  def current_emp
+    if logged_in?
+      emp=Employee.find_by_email(current_email)
+      return emp.id
+    end
+  end
+
+  def current_email
+    if logged_in?
+      return current_user.email
+    end
+  end
+  
+  def admin?
+    if !current_user or !current_user.admin
+      flash[:notice]= "You must be logged in as an admin to see that page!"
+      redirect_to root_url and return
+    else
+      return true
+    end
+  end
+
+  
+  private
+  
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+end

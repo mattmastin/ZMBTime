@@ -1,0 +1,51 @@
+<h2>Edit Employee Info</h2>
+
+<p> <a href="/employees/delete/<%=@employee.id%>" data-confirm="Are you sure that you want to delete employee <%=@employee.first_name%> <%=@employee.last_name%>?">Delete Employee</a> </p>
+
+
+<%= form_for @employee do |f| %>
+<% if @employee.errors.any? %>
+<div class="error_messages">
+  <h2>Form is invalid</h2>
+  <ul>
+    <% for message in @user.errors.full_messages %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<p>
+  <%= f.label :first_name %><br />
+  <%= f.text_field :first_name %>
+</p>
+<p>
+  <%= f.label :last_name %><br />
+  <%= f.text_field :last_name %>
+</p>
+<p>
+  <%= f.label :email %><br />
+  <%= f.text_field :email %>
+</p>
+<p>
+  <%= f.label :telephone_number %><br />
+  <%= f.text_field :telephone_number %>
+</p>
+<p>
+  <%= f.label :street_address %><br />
+  <%= f.text_field :street_address %>
+</p>
+<p>
+  <%= f.label :city %><br />
+  <%= f.text_field :city %>
+</p>
+<p>
+  <%= f.label :state %><br />
+  <%= f.text_field :state %>
+</p>
+<p>
+  <%= f.label :zip_code %><br />
+  <%= f.text_field :zip_code %>
+</p>
+<p class="button"><%= f.submit %></p>
+<% end %>
+<%= link_to "Go Back", :back %>

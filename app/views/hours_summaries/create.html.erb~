@@ -1,0 +1,30 @@
+<h2>Report</h2>
+
+<p> Showing hours for project: <br> <%= @project_name %> </p>
+
+<div id="hours-report-table">
+  <table border="1">
+    <th> Employee </th>
+    <th> Start Date </th>
+    <th> End Date </th>
+    <th> Bench Hours</th>
+    <th> Internal Hours</th>
+    <th> Project Hours </th>
+    <% @employees.each do |e| %>
+    <tr>
+      <td align="center"> <%= e.first_name %> <%= e.last_name %> </td>
+      <td align="center"> <%= @begin_date %> </td>
+      <td align="center"> <%= @end_date %> </td>
+      <td align="center"> <%= @bench_time[e.id] %> </td>
+      <td align="center"> <%= @internal_time[e.id] %> </td>
+      
+      <td align="center"> <%= @project_time[e.id] %> </td>
+      
+    </tr>
+    <% end %>
+  </table>
+  <%= @not_found_message %>
+</div>
+
+<br>
+<%= link_to "Back", :back %>

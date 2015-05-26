@@ -1,0 +1,22 @@
+<h2>Hours Reports</h2>
+
+<%= form_tag do |f|%>
+
+<%=select("project", "id", @projects.collect {|p| [ p.client + ":" + p.project_name,\
+ p.id ] }, {:prompt => 'All Projects'})%>
+<br>
+<br>
+<%= label_tag :begin_date %>
+<br>
+<%= date_select("dates","begin_date", :default => {:day => 1}) %>
+<br>
+<%= text_field_tag :begin_date_cal %>
+<br>
+<%= label_tag :end_date %>
+<br>
+<%= date_select("dates","end_date", :default => {:day => @d.end_of_month.day}) %>
+<br>
+<br>
+<%= submit_tag "Get Report" %>
+
+<% end %>

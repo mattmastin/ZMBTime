@@ -1,0 +1,30 @@
+<h2>Add Project</h2>
+
+<p> <a href="/project_infos/delete/<%=@project.id%>" data-confirm="Are you sure that you want to delete project <%=@project.project_name%>?">Delete Project</a> </p>
+
+<%= form_for @project do |f| %>
+<% if @project.errors.any? %>
+<div class="error_messages">
+  <h2>Form is invalid</h2>
+  <ul>
+    <% for message in @project.errors.full_messages %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<p>
+  <%= f.label :client %><br />
+  <%= f.text_field :client %>
+</p>
+<p>
+  <%= f.label :project_name %><br />
+  <%= f.text_field :project_name %>
+</p>
+<p>
+  <%= f.label :open %><br />
+  <%= f.check_box :open %>
+</p>
+<p class="button"><%= f.submit %></p>
+<% end %>
+<%= link_to "Go Back", :back %>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ZMB DnA Time System</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    
+    <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", "application" %>
+<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application" %>
+    <%= csrf_meta_tags %>
+
+
+  </head>
+  <body>
+    <div id="wrapper">    
+      <div id="content">
+	<div id="top-matter">
+	  <div id="top-element">
+	    <h1> ZMB DnA </h1>
+	    <p> Time Submission System </p>
+	    
+	  </div>
+	  
+	  <div id="user-data">
+	    <% if current_user %>
+	    Logged in as <%= current_user.email %><br>
+	    <%= link_to "Log out", log_out_path %><br>
+	    <% else %>
+	    
+	    You are not logged in.
+	    <% end %>
+	    <% if current_user %>
+	    <%= link_to "Change Password", "/users/change_password" %>
+	    <br>
+	    <%= link_to "Update Info", "/employees/update_info" %>
+	    <% end %>
+	    <br>
+	  </div>
+	</div>
+	
+	<div id="navbar">
+	  <ul id="nav-list">
+	    <% if current_user and current_user.admin %>
+	    <li id="nav-item"><%= link_to "Admin Home", admin_homes_path  %></li>
+	    <% end %>
+	    
+	    <% if current_user %>
+	    <li id="nav-item"><%= link_to "Employee Home", employee_homes_path %></li>
+	    <% else %>
+	    <li id="nav-item">Please log in</li>
+	    <% end %>
+	  </ul>
+	</div>
+	
+	<div id="flash">
+	  <% flash.each do |name, msg| %>
+	  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+	  <% end %>
+	</div>
+	
+	<div id="from-ruby">
+	  <%= yield %>
+	</div>
+      </div>
+    </div>
+    
+    <div id="footer">
+      <div id="footer-text">
+	&#169; 2012 ZMB DnA, LLC. All right reserved.
+      </div>
+    </div>
+    
+  </body>
+</html>

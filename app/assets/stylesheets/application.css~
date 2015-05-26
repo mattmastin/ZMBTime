@@ -1,0 +1,163 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+
+body {
+    min-height:100%;
+    min-width: 700px;
+    font: 20px/1.5 "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /*border-top: 5px solid #181818;*/
+    background: #F8F8F8;
+    color: #444;
+    margin: 0 0 0 0;
+  
+}
+/*
+h6 {
+    font-weight: normal;
+    padding: 0;
+    line-height: 1.5;
+    }
+
+h2 {
+    border-bottom: 1px solid #d6d6d6;
+    padding: 0 0 15px 0;
+    margin: 0 0 30px 0;
+    word-spacing: 6px;
+    }
+
+h3 {
+    margin: 20px 0;
+    font-size: 22px;
+    }
+
+h4 {
+    font-size: 20px;
+    }
+
+h5, h6 {
+    font-size: 16px;
+    color: #444;
+    text-transform: none;
+    }
+
+h1{
+    font-size: 35px;
+    margin: 0 0 0 5px;
+}
+*/
+
+a:link{
+    text-decoration:none;
+    color: #blue;
+}
+a:visited{
+    text-decoration:none;
+}
+a:hover{
+    text-decoration: underline;
+    color: blue;
+}
+a:active{
+    color: blue;
+}
+
+ul#nav-list{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+}
+
+li#nav-item{
+    margin-right: 20px;
+    margin-left: 20px;
+   
+    display: inline;
+}
+#top-element{
+    margin-left: 10%;
+    margin-right: 50px;
+}
+
+#navbar{
+    
+    padding: 10px;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    text-align: center;
+    background-color: #E0E0E0;
+ 
+}
+#top-matter{
+    background: #C0C0C0;
+    border: 2px solid;
+}
+#flash{
+    text-align: center;
+    color: red;
+}
+
+
+#user-data{
+    position: absolute;
+    top:25px;
+    right:10%;
+    text-align: right;
+}
+
+#flash_notice{
+    color: red;
+}
+
+#from-ruby{
+   margin-left: 20%;
+   margin-right: 60px;
+   min-height: 100%
+   height:100%;
+   padding: 15px;
+   /*padding:10px;
+ /*  padding-bottom:36px;   /* Height of the footer */
+   /*margin-bottom: -36px;*/
+}
+
+html, body, #wrapper{ 
+    height: 100%; 
+}
+
+body > #wrapper{ 
+    height: auto; min-height: 100%; 
+}
+
+/*#wrapper{
+    height: 100%;
+    min-height: 100%;
+}*/
+
+#footer{
+    clear: both;
+    position: relative;
+    z-index: 10;
+    height: 3em;
+    color: white;
+    margin-top: -3em;
+    text-align: center;
+    font-size: 12px;
+    background: #303030;
+   /* border: 1px dotted;*/
+}
+
+#content{
+    padding-bottom: 3em;
+}

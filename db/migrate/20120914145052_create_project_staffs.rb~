@@ -1,0 +1,8 @@
+class CreateProjectStaffs < ActiveRecord::Migration
+  def change
+    create_table :project_staffs do |t|
+
+      t.timestamps
+    end
+  end
+end

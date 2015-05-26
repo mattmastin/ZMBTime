@@ -1,0 +1,16 @@
+class ExpenseMailer < ActionMailer::Base
+  default from: "time-expense@zmbdna.com"
+
+  def expense_email(expense, employee, project, file_path)
+    @expense = expense
+    @employee = employee
+    @project = project
+    @file_path = file_path
+
+#    @employee = Employee.find(@expense.employee_id)
+    
+#    @project = ProjectInfo.find(@expense.project_id)
+    attachments['receipts.pdf'] = File.read(@file_path)
+    mail(:to => "mmastin@zmbdna.com", :subject => "Expense Report")
+  end
+end

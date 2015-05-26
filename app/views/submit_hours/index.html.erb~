@@ -1,0 +1,49 @@
+<h2> Submit Hours </h2>
+
+Select a project
+
+<%= form_tag do %>
+
+<%=select("project", "id", @projects.collect {|p| [ p.client + ":" + p.project_name, p.id ] }, {:prompt => 'Select Project'})%>
+
+<%= submit_tag "Select Project" %>
+<% end %>
+
+
+
+<%= form_tag do %>
+
+<div id="hours-warning">
+  <br>
+  Note: Resubmitting hours will result in an override.
+</div>
+
+<div id="calendar">
+  <h2 id="month">
+    <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m") %>
+    <%=h @date.strftime("%B %Y") %>
+    <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m") %>
+  </h2>
+  <%= calendar_for @submissions, :year => @date.year, :month => @date.month do |calendar| %>
+  <%= calendar.head('Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat') %>
+  <%= calendar.day(:day_method => :work_date) do |date,submissions| %>
+  <%= date.day %>
+  <br>
+  <% for s in submissions %>
+  <FONT COLOR="FF0000"><%= s.hours %></FONT>
+  <% end %>
+  <br>
+  <%=select("sub_hours", date.year.to_s+"-"+date.month.to_s+"-"+date.day.to_s, @hours, {:prompt => '-'}, :disabled => @disable_cal)%>
+  :
+  <%=select("sub_minutes", date.year.to_s+"-"+date.month.to_s+"-"+date.day.to_s, @mins, {:prompt => '-'}, :disabled => @disable_cal)%>
+  <br>
+  
+  <% end %>
+  <% end %>
+  
+  <%= submit_tag "Submit Hours" %>
+  
+</div>
+
+<% end %>
+

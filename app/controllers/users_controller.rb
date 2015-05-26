@@ -1,0 +1,101 @@
+class UsersController < ApplicationController
+  def new
+    if admin?
+      @user = User.new
+    end
+  end
+
+  def show
+    if admin?
+      begin
+        @user = User.find(params[:id])
+      rescue
+        flash[:error] = "User not found!"
+        redirect_to users_path
+      end
+    end
+  end
+  
+  def create
+    if admin?
+      @user = User.new(params[:user])
+      if @user.save
+        redirect_to users_path
+        flash[:notice] = "User " + @user.email + " created!"
+      else
+        render "new"
+      end
+    end
+  end
+  
+  def index
+    if admin?
+      @users = User.find(:all)
+    end
+  end
+
+  def update
+    if logged_in?
+      if params[:commit]=="Update Password"
+        @user = User.update(current_id,params[:user])
+
+        if @user.save
+         # redirect_to employee_homes_path
+          flash[:notice] = "Password changed!"
+        else
+          render "change_password" and return
+        end
+       
+        redirect_to employee_homes_path and return
+      end
+    end
+    
+    if admin?
+      params[:user][:email] = params[:user][:email].downcase
+      @user = User.update(params[:id],params[:user])
+      
+      if @user.save
+        redirect_to users_path 
+        flash[:notice] = "User " + @user.email + "  updated!"
+      else
+        render "show"
+      end
+    end
+  end
+
+
+  def delete
+    @user = User.find(params[:id])
+    if admin?
+      if @user.id == current_id
+        flash[:notice] = "You cannot delete yourself!"
+        redirect_to users_path
+      else
+        @user = User.find(params[:id])
+        User.delete(params[:id])
+        flash[:notice] = "User " + @user.email + " deleted!"
+        redirect_to users_path
+      end
+    end
+  end
+
+  def change_password
+    if logged_in?
+      @user = User.find(current_id)
+    end
+  end
+  
+  def update_password
+    if logged_in?
+      @user = User.update(current_id,params[:user])
+      
+      if @user.save
+        redirect_to employee_homes_path
+        flash[:notice] = "Password changed!"
+      else
+        render "change_password"
+      end
+      
+    end
+  end
+end

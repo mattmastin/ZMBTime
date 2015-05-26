@@ -1,0 +1,29 @@
+<div id="projects-index-container">
+  <div id="project-title">
+    
+    <h2> Projects Page </h2>
+    <p> <%= link_to "Add new project", "/project_infos/new" %></p>
+  </div>    
+  
+  <div id="projects-table">
+    <h3> Current Projects </h3>
+    <p> Click to edit or delete.</p>
+  
+    
+    <table border="1">
+      <th> Client </th>
+      <th> Project Name </th>
+      <th> Open? </th>
+      <% @projects.each do |p| %>
+      <tr>
+	<td> <a href="/project_infos/show/<%= p.id %>"> <%= p.client %> </a> </td>
+	<td> <a href="/project_infos/show/<%= p.id %>"> <%= p.project_name %> </a> </td>
+	<td> <a href="/project_infos/show/<%= p.id %>"> <%= p.open %> </a> </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  <br>
+
+</div>
+

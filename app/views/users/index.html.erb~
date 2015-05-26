@@ -1,0 +1,27 @@
+<div id="users-index-container">
+  <div id="users-title">
+    
+    <h2> Users Page </h2>
+    <p> <%= link_to "Add new user", "/users/new" %></p>
+  </div>    
+  
+  <div id="users-table">
+    <h3> Current Users </h3>
+    <p> Click to edit or delete.</p>
+  
+    
+    <table border="1">
+      <th> User Name </th>
+      <% @users.each do |u| %>
+      <tr>
+	<td> <a href="/users/show/<%= u.id %>"> <%= u.email %> </a> </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  <br>
+  <div>
+
+  </div>
+</div>
+

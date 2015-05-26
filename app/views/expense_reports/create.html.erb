@@ -1,0 +1,18 @@
+<h2> Expense Report </h2>
+<p> The following expense report has been submitted.</p>
+<hr width="300" align="left">
+<div class="expense-report">
+Employee: <%= @employee.first_name %>  <%= @employee.last_name %>
+<br>
+<br>
+Client: <%= @project.client %>
+<br>
+<br>
+Project: <%= @project.project_name %>
+<br>
+<br>
+Amount: <%= @expense.amount %>
+<br>
+<br>
+Desription: <%= @expense.description %>
+</div>

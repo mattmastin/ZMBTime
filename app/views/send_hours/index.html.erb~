@@ -1,0 +1,22 @@
+<h2> Hours Summaries </h2>
+
+<%= form_tag do |f|%>
+
+<%=select("project", "id", @projects.collect {|p| [ p.client + ":" + p.project_name,p.id ] }, {:prompt => 'All Projects'})%>
+<br>
+<br>
+<%=select("employee", "id", @employees.collect {|p| [ p.first_name + " " + p.last_name,p.id ] }, {:prompt => 'All Employees'})%>
+<br>
+<br>
+<%= label_tag :begin_date %>
+<br>
+<%= date_select("dates","begin_date", :default => {:day => 1}) %>
+<br>
+<br>
+<%= label_tag :end_date %>
+<br>
+<%= date_select("dates","end_date", :default => {:day => @d.end_of_month.day})%>
+<br>
+<br>
+<%= submit_tag "Send Time Report" %>
+<% end %>

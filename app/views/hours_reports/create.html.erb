@@ -1,0 +1,26 @@
+<h2>Hours Report</h2>
+
+<div id="hours-report-table">
+  <table border="1">
+    <th> Client </th>
+    <th> Project Name </th>
+    <th> Date </th>
+    <th> Hours </th>
+    <% @submissions.each do |s| %>
+    <tr>
+      <td align="center"> <%= @client_names[s.project_id] %> </td>
+      <td align="center"> <%= @project_names[s.project_id] %> </td>
+      <td align="center"> <%= s.work_date %> </td>
+      <td align="center"> <%= s.hours %>:<%= @minutes_display[s.id] %> </td>
+    </tr>
+    <% end %>
+  </table>
+  <%= @not_found_message %>
+</div>
+<br>
+CSV Data
+<br>
+<%= text_area_tag :csv_data, @csv, :rows=> 10, :cols => 40, :disabled => true %>
+
+<br>
+<%= link_to "Back", :back %>

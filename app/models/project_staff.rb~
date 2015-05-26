@@ -1,0 +1,3 @@
+class ProjectStaff < ActiveRecord::Base
+  # attr_accessible :title, :body
+end

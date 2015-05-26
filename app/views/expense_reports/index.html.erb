@@ -1,0 +1,24 @@
+<h2> Submit Expense Report </h2>
+
+<%= form_for @expense, :html => {:multipart => true} do |e| %>
+
+<%=select("project", "id", @projects.collect {|p| [ p.client + ":" + p.project_name, p.id ] }, {:prompt => 'Select Project'})%>
+<br>
+<br>
+<%= e.label "Amount:" %>
+<br>
+$<%= e.text_field :amount, :size => 10, :value => params[:amount] %>
+<br>
+<br>
+<%= e.label "Description" %>
+<br>
+<%= e.text_area :description, :value => params[:description] %>
+<br>
+<br>
+Include any receipts as a single file:
+<br>
+<%= file_field_tag :file %>
+<br>
+<br>
+<%= e.submit "Submit Expense Report" %>
+<% end %>

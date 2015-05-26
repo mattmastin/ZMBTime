@@ -1,0 +1,7 @@
+class TimeSubmission < ActiveRecord::Base
+  attr_accessible :project_id, :employee_id, :work_date, :hours, :minutes
+
+  def date
+    return self.work_date
+  end
+end

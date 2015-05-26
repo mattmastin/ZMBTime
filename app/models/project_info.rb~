@@ -1,0 +1,3 @@
+class ProjectInfo < ActiveRecord::Base
+  attr_accessible :client, :project_name
+end

@@ -1,0 +1,7 @@
+class AdminHomesController < ApplicationController
+
+  def show
+    if admin?
+    end
+  end
+end

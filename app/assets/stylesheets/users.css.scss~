@@ -1,0 +1,28 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#users-container{
+	position: relative;
+	min-height: 100%;
+	height: 100%;
+}
+
+#user-title{
+	position: absolute;
+	left: 100px;
+
+}
+
+#user-table{
+	position: absolute;
+	right: 100px;
+	top: 0px;
+
+	
+}
+
+#clear{
+	position: absolute;
+	clear: both;
+}

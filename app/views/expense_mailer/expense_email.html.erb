@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Expense Report</h1>
+    <p>
+      Below is an expense report for <%= @employee.first_name %> <%= @employee.last_name %>.
+    </p>
+    <p>
+      Client: <%= @project.client %> 
+      <br>
+      Project Name: <%= @project.project_name %>
+      <br>
+      Amount: <%= @expense.amount %>
+      <br>
+      Description: <%= @expense.description %>
+    </p>
+    
+  </body>
+</html>

@@ -1,0 +1,10 @@
+<h2> Admin Home </h2>
+
+
+<%= link_to "Users", users_path %>
+<br>
+<%= link_to "Employees", employees_path %>
+<br>
+<%= link_to "Projects", project_infos_path %>
+<br>
+<%= link_to "Hours Summaries", hours_summaries_path %>

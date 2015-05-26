@@ -1,0 +1,10 @@
+class CreateProjectInfos < ActiveRecord::Migration
+  def change
+    create_table :project_infos do |t|
+      t.string :client
+      t.string :project_name
+
+      t.timestamps
+    end
+  end
+end

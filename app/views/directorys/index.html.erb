@@ -1,0 +1,18 @@
+<h2> Company Directory </h2>
+<div id="directorys-table">
+  <h3> Current Employeess </h3>  
+  <table border="1">
+    <th> First Name </th>
+    <th> Last Name </th>
+    <th> Email Address </th>
+    <th> Phone Number </th>
+    <% @employees.each do |e| %>
+    <tr>
+      <td> <%= e.first_name %> </td>
+      <td> <%= e.last_name %> </td>
+      <td> <%= e.email %> </td>
+      <td> <%= e.telephone_number %> </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
